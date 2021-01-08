@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="director2" class="demo.entidad.Director" scope="prototype">
+		<constructor-arg index="0" value="3"></constructor-arg>
+		<constructor-arg index="1" value="Santi"></constructor-arg>
+		<constructor-arg index="2" value="32"></constructor-arg>
+		<constructor-arg index="3" value="13/09/1999"></constructor-arg>
+	</bean>
+	<bean id="actor2" class="demo.entidad.Actor" scope="prototype">
+		<constructor-arg index="0" value="4"></constructor-arg>
+		<constructor-arg index="1" value="Felix"></constructor-arg>
+		<constructor-arg index="2" value="52"></constructor-arg>
+	</bean>
+	<bean id="pelicula2" class="demo.entidad.Pelicula" scope="prototype">
+	<!--  
+		<constructor-arg index="0" value="2"></constructor-arg>	
+		<constructor-arg index="1" ref="director2"></constructor-arg>
+		<constructor-arg index="2" ref="actor2"></constructor-arg>
+	-->
+		<property name="actor">
+			<ref bean="actor2"></ref>
+		</property>
+		<property name="director">
+			<ref bean="director2"></ref>
+		</property>
+		<property name="id" value="3"></property>
+	</bean>
+</beans>

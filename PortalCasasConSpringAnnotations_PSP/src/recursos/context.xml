@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<context:component-scan base-package="entidad"></context:component-scan>
+	<bean id="direccionDueño" class="entidad.Direccion">
+		<property name="tipoVia" value="Avenida"></property>
+		<property name="nombreVia" value="Asuncion"></property>
+		<property name="cp" value="98985"></property>
+	</bean>
+	<bean id="habitacionBaño" class="entidad.Habitacion">
+		<property name="m2" value="50"></property>
+		<property name="cantHabitaciones" value="2"></property>
+		<property name="tipoHabitacion" value="Baño"></property>
+	</bean>
+	<bean id="direccionInquilinos" class="entidad.Direccion">
+				<property name="tipoVia" value="Calle"></property>
+				<property name="nombreVia" value="Esperanza"></property>
+				<property name="cp" value="987654"></property>
+			</bean>
+	<bean id="inquilino1" class="entidad.Persona">
+		<property name="rol" value="Padre"></property>
+		<property name="nombre" value="Pablo"></property>
+		<property name="direccion">
+			<ref bean="direccionInquilinos"/>
+		</property>
+		<property name="edad" value="30"></property>
+	</bean>
+	<bean id="inquilino2" class="entidad.Persona">
+		<property name="rol" value="Madre"></property>
+		<property name="nombre" value="Lana"></property>
+		<property name="direccion">
+			<ref bean="direccionInquilinos"/>
+		</property>
+		<property name="edad" value="28"></property>
+	</bean><bean id="inquilino3" class="entidad.Persona">
+		<property name="rol" value="Hijo"></property>
+		<property name="nombre" value="Carlitos"></property>
+		<property name="direccion">
+			<ref bean="direccionInquilinos"/>
+		</property>
+		<property name="edad" value="7"></property>
+	</bean>
+	
+	<bean id="habitaciones" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="habitacionBaño"/>
+				<bean id="habitacionSalon" class="entidad.Habitacion">
+					<property name="m2" value="100"></property>
+					<property name="cantHabitaciones" value="1"></property>
+					<property name="tipoHabitacion" value="Salon"></property>
+				</bean>
+				<bean id="habitacionDormitorio" class="entidad.Habitacion">
+					<property name="m2" value="55"></property>
+					<property name="cantHabitaciones" value="3"></property>
+					<property name="tipoHabitacion" value="Dormitorio"></property>
+				</bean>
+				<bean id="habitacionPiscina" class="entidad.Habitacion">
+					<property name="m2" value="70"></property>
+					<property name="cantHabitaciones" value="1"></property>
+					<property name="tipoHabitacion" value="Piscina"></property>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="inquilinos" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="inquilino1"/>
+				<ref bean="inquilino2"/>
+				<ref bean="inquilino3"/>
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>
